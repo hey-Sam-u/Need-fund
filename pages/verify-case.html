@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Need-Fund — Case Verification (Demo)</title>
+
+    <!--
+    Integration instructions (copy into pages/patients.js render logic):
+
+    // Key prefix used by this demo:
+    const VER_KEY_PREFIX = 'needfund_verified_';
+
+    // Example snippet to show verified badge when rendering each patient card:
+    const key = VER_KEY_PREFIX + caseId; // caseId example: 'NF-1023'
+    const v = localStorage.getItem(key);
+    if (v) {
+      const parsed = JSON.parse(v);
+      // show badge and optionally add tooltip text:
+      // e.g. badgeElement.classList.add('verified'); badgeElement.title = `Verified on ${new Date(parsed.verifiedAt).toLocaleString()} by ${parsed.verifier}`;
+    }
+
+    // To auto-update when verify-case.html verifies in another tab:
+    window.addEventListener('storage', (e) => {
+      if (e.key && e.key.startsWith(VER_KEY_PREFIX)) {
+        // re-run your card render or update specific card
+      }
+    });
+
+    NOTES:
+    - Key pattern: needfund_verified_<CASE_ID> (e.g. needfund_verified_NF-1023)
+    - Stored value JSON:
+      {
+        verified: true,
+        verifiedAt: <timestamp>,
+        verifier: 'Hospital AI Bot (demo)',
+        docName: 'file.jpg',
+        docPreview: 'data:image/…' // optional (demo only)
+      }
+    - Demo mode: do NOT upload real sensitive docs.
+  -->
+
+    <link rel="stylesheet" href="verify-case.css" />
+  </head>
+  <body>
+    <main class="wrap" role="main">
+      <header class="vc-header">
+        <button id="backBtn" class="back" aria-label="Back to cases">◀</button>
+        <h1>Case Verification</h1>
+      </header>
+
+      <section class="card" aria-labelledby="card-title">
+        <h2 id="card-title" class="sr-only">Verification Card</h2>
+
+        <!-- CASE SELECTOR -->
+        <label for="caseSelect" class="label">Select Case ID</label>
+        <div class="row">
+          <select id="caseSelect" aria-label="Select case ID">
+            <!-- options injected by JS -->
+          </select>
+          <button id="loadPreview" class="btn-ghost">Preview</button>
+        </div>
+
+        <!-- patient preview -->
+        <div id="previewBox" class="preview hidden" aria-live="polite">
+          <img id="previewImg" src="" alt="patient photo" />
+          <div class="preview-text">
+            <div id="previewName" class="pname"></div>
+            <div id="previewHospital" class="phospital"></div>
+          </div>
+        </div>
+
+        <!-- UPLOAD AREA -->
+        <label class="label">Upload Hospital Document (photo / bill)</label>
+        <div
+          id="uploadArea"
+          class="upload"
+          tabindex="0"
+          role="button"
+          aria-label="Upload document"
+        >
+          <div class="upload-inner">
+            <svg
+              class="upload-icon"
+              viewBox="0 0 24 24"
+              width="36"
+              height="36"
+              aria-hidden
+            >
+              <path
+                fill="currentColor"
+                d="M12 3l4 4h-3v7h-2V7H8l4-4zm-6 13v2h12v-2H6z"
+              />
+            </svg>
+            <div id="uploadText">
+              Drag & drop or
+              <button id="uploadBtn" class="link-btn" type="button">
+                choose file
+              </button>
+            </div>
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/png,image/jpeg"
+              class="hidden"
+            />
+          </div>
+        </div>
+
+        <div id="fileMeta" class="file-meta hidden" aria-live="polite">
+          <img id="fileThumb" src="" alt="uploaded preview" />
+          <div class="file-info">
+            <div id="fileName" class="fname"></div>
+            <div id="fileSize" class="fsize"></div>
+          </div>
+          <button id="removeFile" class="btn-small">Remove</button>
+        </div>
+
+        <!-- INPUTS -->
+        <label for="hospitalName" class="label">Hospital Name</label>
+        <input
+          id="hospitalName"
+          type="text"
+          placeholder="Enter hospital name"
+        />
+
+        <label for="wardNo" class="label">Ward / Room No (optional)</label>
+        <input id="wardNo" type="text" placeholder="Block / Ward / Room" />
+
+        <!-- VERIFY BUTTON -->
+        <button id="verifyBtn" class="btn-primary">Verify Now</button>
+
+        <!-- AI SCAN OVERLAY -->
+        <div
+          id="overlay"
+          class="overlay hidden"
+          role="status"
+          aria-live="polite"
+        >
+          <div class="overlay-inner">
+            <div class="loader-ring" aria-hidden></div>
+            <div class="steps" id="stepsList">
+              <!-- steps injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- RESULT CARD -->
+        <div
+          id="resultCard"
+          class="result hidden"
+          role="region"
+          aria-live="polite"
+        >
+          <div class="tick-wrap" aria-hidden>
+            <!-- inline SVG tick -->
+            <svg class="tick" viewBox="0 0 64 64" width="80" height="80">
+              <circle cx="32" cy="32" r="30" fill="#198754" opacity="0.15" />
+              <path
+                d="M18 34 L28 44 L46 20"
+                stroke="#198754"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <h3 id="resultTitle">Case Successfully Verified</h3>
+          <p id="resultMeta" class="muted">
+            Verified by Hospital AI Bot (demo)
+          </p>
+
+          <div class="result-info">
+            <div><strong>Case ID:</strong> <span id="rCase"></span></div>
+            <div><strong>Hospital:</strong> <span id="rHospital"></span></div>
+            <div><strong>Document:</strong> <span id="rDoc"></span></div>
+            <div><strong>Time:</strong> <span id="rTime"></span></div>
+          </div>
+
+          <div class="result-actions">
+            <button id="applyBadge" class="btn-primary">
+              Add Verified Badge to Patient
+            </button>
+            <button id="backToCases" class="btn-ghost">Back to Cases</button>
+          </div>
+        </div>
+
+        <p class="demo-note">
+          DEMO MODE — frontend simulation only. Do not upload real sensitive
+          documents.
+        </p>
+      </section>
+    </main>
+
+    <script src="verify-case.js"></script>
+  </body>
+</html>

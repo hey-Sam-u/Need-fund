@@ -1,0 +1,205 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f2f4f7;
+  color: #212529;
+}
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.menu a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* MAIN CARD */
+.patient-section {
+  padding: 15px;
+}
+
+.patient-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* PHOTO */
+.photo {
+  position: relative;
+}
+
+.photo img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.verified-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #198754;
+  padding: 5px 10px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* DETAILS */
+.details h1 {
+  font-size: 1.45rem;
+  margin-bottom: 4px;
+}
+
+.hospital {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.case-summary {
+  font-size: 0.92rem;
+  color: #333;
+  line-height: 1.45;
+  margin-bottom: 15px;
+}
+
+/* PROGRESS BAR */
+.amount-section {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  background: #e9ecef;
+  height: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #198754;
+  width: 0;
+  transition: width 0.8s ease;
+}
+
+.amount-needed {
+  margin-top: 6px;
+  font-weight: 600;
+  color: #0d6efd;
+  font-size: 1rem;
+}
+
+/* DONATE BUTTON */
+.donate-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.donate-btn:hover {
+  background: #0b5ed7;
+  transform: scale(1.03);
+}
+
+/* DONOR MESSAGES */
+.donor-messages {
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.donor-messages h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.messages {
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.messages p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.messages p:last-child {
+  border-bottom: none;
+}
+
+/* RESPONSIVE DESKTOP */
+@media (min-width: 768px) {
+  .patient-card {
+    flex-direction: row;
+    gap: 25px;
+  }
+
+  .photo {
+    flex: 0 0 40%;
+  }
+
+  .details {
+    flex: 1;
+  }
+
+  .messages {
+    max-height: 350px;
+  }
+}
+/* FADE-IN ANIMATION */
+/* .appear {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+.photo,
+.details,
+.donor-messages {
+  opacity: 0;
+  transform: translateY(20px);
+} */

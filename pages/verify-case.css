@@ -1,0 +1,366 @@
+/* verify-case.css - mobile-first */
+
+/* basics */
+:root {
+  --blue: #0d6efd;
+  --green: #198754;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --muted: #6c757d;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* wrapper */
+.wrap {
+  max-width: 720px;
+  margin: 18px auto;
+  padding: 16px;
+}
+
+/* header */
+.vc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.vc-header h1 {
+  font-size: 1.05rem;
+  margin: 0;
+  font-weight: 700;
+}
+.back {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--blue);
+  padding: 8px;
+  border-radius: 8px;
+}
+.sr-only {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* card */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(13, 110, 253, 0.06);
+}
+
+/* labels & inputs */
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+select,
+input[type="text"],
+input[type="file"],
+input[type="number"],
+.upload-inner {
+  width: 100%;
+  font-size: 1rem;
+}
+select,
+input[type="text"],
+input[type="number"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e6e9ef;
+  background: #fff;
+  outline: none;
+}
+select:focus,
+input:focus {
+  box-shadow: 0 6px 18px rgba(13, 110, 253, 0.06);
+  border-color: var(--blue);
+}
+
+/* row */
+.row {
+  display: flex;
+  gap: 8px;
+}
+.btn-ghost {
+  background: #f1f3ff;
+  border: 1px solid #e6e9ef;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* preview */
+.preview {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #fbfdff;
+}
+.preview img {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.preview-text .pname {
+  font-weight: 700;
+}
+.preview-text .phospital {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* upload area */
+.upload {
+  margin-top: 6px;
+  border: 2px dashed #e0e6f0;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(250, 250, 255, 0.6)
+  );
+  cursor: pointer;
+  outline: none;
+}
+.upload-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.upload-icon {
+  color: var(--blue);
+  opacity: 0.9;
+}
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 600;
+}
+
+/* file meta */
+.file-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+.file-meta img {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.file-info .fname {
+  font-weight: 600;
+}
+.file-info .fsize {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* small buttons */
+.btn-small {
+  background: #fff;
+  border: 1px solid #e6e9ef;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* primary button */
+.btn-primary {
+  display: inline-block;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  margin-top: 14px;
+  cursor: pointer;
+}
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.overlay-inner {
+  background: rgba(255, 255, 255, 0.04);
+  max-width: 420px;
+  width: 92%;
+  padding: 18px;
+  border-radius: 12px;
+  color: #fff;
+  backdrop-filter: blur(4px);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.loader-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  border: 4px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--blue);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* steps list */
+.steps {
+  flex: 1;
+}
+.step {
+  opacity: 0.25;
+  color: #fff;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.step.done {
+  opacity: 1;
+  color: #dff7e6;
+}
+.step .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.step.done .dot {
+  background: var(--green);
+}
+
+/* result card */
+.result {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f5fff7, #ffffff);
+  box-shadow: 0 8px 20px rgba(25, 135, 84, 0.06);
+  text-align: center;
+}
+.tick-wrap {
+  margin-bottom: 8px;
+}
+.tick-wrap svg {
+  transform-origin: center;
+  animation: pop 600ms ease forwards;
+}
+@keyframes pop {
+  0% {
+    transform: scale(0.2) rotate(-15deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* result info */
+.result-info {
+  margin-top: 8px;
+  text-align: left;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ef;
+}
+.result-info div {
+  font-size: 0.95rem;
+  padding: 6px 0;
+  border-bottom: 1px dashed #f0f2f5;
+}
+.result-info div:last-child {
+  border-bottom: none;
+}
+
+/* actions */
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.btn-ghost {
+  min-height: 44px;
+  padding: 10px 14px;
+}
+
+/* footer note */
+.demo-note {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* hidden util */
+.hidden {
+  display: none;
+}
+
+/* responsive larger padding on desktop */
+@media (min-width: 720px) {
+  .wrap {
+    padding: 20px;
+  }
+  .card {
+    padding: 20px;
+  }
+  .overlay-inner {
+    padding: 22px;
+  }
+}

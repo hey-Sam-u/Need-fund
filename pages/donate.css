@@ -1,0 +1,214 @@
+/* RESET & GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #212529;
+  line-height: 1.5;
+}
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.header .logo {
+  font-weight: 700;
+  color: #0d6efd;
+  font-size: 1.2rem;
+}
+
+.header .menu a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header .menu a:hover {
+  color: #198754;
+}
+
+/* DONATE SECTION */
+.donate-section {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  max-width: 500px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.donate-section h1 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* FORM */
+#donateForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#donateForm label {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+#donateForm input,
+#donateForm textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+#donateForm textarea {
+  resize: none;
+  height: 100px;
+}
+
+.btn {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s, background 0.3s;
+  width: 100%;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: #0b5ed7;
+}
+
+/* SUCCESS MESSAGE */
+.success-msg {
+  display: none;
+  margin-top: 20px;
+  background: #198754;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  animation: popup 0.5s ease;
+}
+
+@keyframes popup {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+  #donateForm {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  #donateForm input,
+  #donateForm textarea {
+    flex: 1 1 48%;
+  }
+  #donateForm textarea {
+    flex-basis: 100%;
+  }
+  .btn {
+    width: 50%;
+    align-self: flex-end;
+  }
+}
+.patient-info-box {
+  background: #eef5ff;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.patient-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.p-details h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.verified-tag {
+  background: #28a745;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.p-story {
+  font-size: 0.85rem;
+  margin-top: 6px;
+}
+
+.p-progress {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.p-bar {
+  height: 100%;
+  background: #0d6efd;
+  transition: width 1s ease;
+}
+
+.upi-box,
+.cash-box,
+.bank-box {
+  display: none;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.upi-img {
+  width: 140px;
+  margin-top: 5px;
+}

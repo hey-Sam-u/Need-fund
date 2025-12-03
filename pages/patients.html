@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Need-Fund — Active Patients</title>
+    <link rel="stylesheet" href="patients.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">Need-Fund</div>
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+      </nav>
+    </header>
+
+    <!-- HERO / INTRO -->
+    <section class="hero">
+      <h1>Active Patient Cases</h1>
+      <p>Help patients in urgent need with secure donations.</p>
+    </section>
+
+    <!-- <input type="text" id="search-input" placeholder="Search by name/hospital" /> -->
+    <button id="donateBtn" class="btn">Donate Now</button>
+
+    <div class="search-filter-row">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search by name/hospital"
+      />
+      <select id="filter-hospital">
+        <option value="">Hospital</option>
+      </select>
+    </div>
+
+    <!-- FILTERS -->
+    <section class="filters">
+      <select id="filter-urgent">
+        <option value="">Urgent</option>
+        <option value="yes">Yes</option>
+      </select>
+      <select id="filter-verified">
+        <option value="">Verified</option>
+        <option value="yes">Yes</option>
+      </select>
+      <select id="filter-amount">
+        <option value="">Amount Needed</option>
+        <option value="low">Low → High</option>
+        <option value="high">High → Low</option>
+      </select>
+    </section>
+
+    <!-- PATIENT CARDS -->
+    <section class="patients-cards" id="patients-cards">
+      <!-- Sample Patient Card -->
+      <div class="patient-card">
+        <div class="card-photo">
+          <img src="../logo.png" alt="Patient Photo" />
+          <span class="verified-badge">✔ Verified</span>
+        </div>
+        <div class="card-info">
+          <h3>John Doe</h3>
+          <p class="hospital">City Hospital</p>
+          <p class="summary">
+            Needs urgent surgery for appendicitis. Family cannot afford
+            treatment.
+          </p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 45%"></div>
+          </div>
+          <p class="amount-needed">$5,000 needed</p>
+          <a href="patient-detail.html" class="btn">View Details</a>
+        </div>
+      </div>
+      <div class="patient-card">
+        <div class="card-photo">
+          <img src="../logo.png" alt="Patient Photo" />
+          <span class="verified-badge">✔ Verified</span>
+        </div>
+        <div class="card-info">
+          <h3>Jane Smith</h3>
+          <p class="hospital">Metro Medical Center</p>
+          <p class="summary">
+            Critical care for heart condition. Immediate donation required.
+          </p>
+          <div class="progress-bar">
+            <div class="progress" style="width: 70%"></div>
+          </div>
+          <p class="amount-needed">$8,000 needed</p>
+          <a href="patient-detail.html" class="btn">View Details</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="patients.js"></script>
+  </body>
+</html>

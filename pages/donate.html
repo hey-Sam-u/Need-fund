@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Need-Fund — Donate</title>
+    <link rel="stylesheet" href="donate.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">Need-Fund</div>
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+        <a href="patients.html">Patients</a>
+      </nav>
+    </header>
+
+    <section class="donate-section">
+      <!-- PATIENT INFO -->
+      <div class="patient-info-box">
+        <img src="../logo.png" class="patient-photo" />
+
+        <div class="p-details">
+          <h2 id="pName">John Doe</h2>
+          <p id="pHospital">City Hospital</p>
+          <span class="verified-tag">✔ Verified Patient</span>
+
+          <p class="p-story">
+            Suffering from urgent liver infection. Needs immediate treatment.
+          </p>
+        </div>
+      </div>
+
+      <!-- AMOUNT PROGRESS -->
+      <div class="p-progress">
+        <div class="p-bar" style="width: 45%"></div>
+      </div>
+      <p class="needed-label">₹80,000 needed</p>
+
+      <h1>Donate to this Patient</h1>
+
+      <!-- DONATE FORM -->
+      <form id="donateForm">
+        <label>Your Name</label>
+        <input
+          type="text"
+          id="donorName"
+          placeholder="Enter your name"
+          required
+        />
+
+        <label>Donation Amount (₹)</label>
+        <input type="number" id="amount" placeholder="₹" required />
+
+        <label>Message (optional)</label>
+        <textarea id="message" placeholder="Your message"></textarea>
+
+        <!-- PAYMENT MODE -->
+        <label>Choose Payment Method</label>
+        <select id="payMethod">
+          <option value="upi">UPI</option>
+          <option value="cash">Cash</option>
+          <option value="bank">Bank Transfer</option>
+        </select>
+
+        <!-- UPI BOX -->
+        <div id="upiBox" class="upi-box">
+          <p>Scan UPI QR</p>
+          <img src="../qr.png" class="upi-img" />
+          <p class="upi-id">UPI: needfund@ybl</p>
+        </div>
+
+        <!-- CASH NOTE -->
+        <div id="cashBox" class="cash-box">
+          <p>You selected <b>Cash</b>. Our team will contact you.</p>
+        </div>
+
+        <!-- BANK DETAILS -->
+        <div id="bankBox" class="bank-box">
+          <p><b>Bank Transfer Details</b></p>
+          <p>Account: NeedFund Trust</p>
+          <p>IFSC: SBIN0001234</p>
+          <p>AC No: 12345678901</p>
+        </div>
+
+        <button type="submit" class="btn">Donate Now</button>
+      </form>
+
+      <!-- SUCCESS -->
+      <div id="successMsg" class="success-msg">
+        <p>✔ Donation received — Thank you! ❤️</p>
+      </div>
+    </section>
+
+    <script src="donate.js"></script>
+  </body>
+</html>

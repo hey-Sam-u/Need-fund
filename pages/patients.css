@@ -1,0 +1,287 @@
+/* RESET & GLOBAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #f8f9fa;
+  color: #212529;
+  line-height: 1.5;
+}
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.header .logo {
+  font-weight: 700;
+  color: #0d6efd;
+  font-size: 1.2rem;
+}
+
+.header .menu a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header .menu a:hover {
+  color: #198754;
+}
+
+/* HERO / INTRO */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* FILTERS */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+}
+
+/* PATIENT CARDS */
+.patients-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px 40px;
+}
+
+.patient-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.patient-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-photo {
+  position: relative;
+}
+
+.card-photo img {
+  width: 100%;
+  height: auto;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.verified-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #198754;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* CARD INFO */
+.card-info {
+  padding: 15px;
+}
+
+.card-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.card-info .hospital {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.card-info .summary {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-bar {
+  background: #e9ecef;
+  border-radius: 10px;
+  height: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  background: #198754;
+  height: 100%;
+  width: 0;
+  transition: width 1s ease;
+}
+
+.amount-needed {
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: #0b5ed7;
+}
+
+/* RESPONSIVE */
+@media (min-width: 768px) {
+  .patients-cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .patient-card {
+    flex: 0 0 30%;
+  }
+  .card-photo img {
+    height: 200px;
+    object-fit: cover;
+  }
+  .card-info .summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+/* Search + Hospital Filter Row */
+.search-filter-row {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  gap: 10px;
+}
+
+/* Search Bar */
+#search-input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  transition: 0.25s;
+  background: #fff;
+}
+
+#search-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.25);
+}
+
+/* Hospital Dropdown */
+#filter-hospital {
+  width: 120px;
+  padding: 12px 10px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  transition: 0.25s;
+}
+
+#filter-hospital:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.25);
+}
+
+/* Mobile Friendly */
+@media (max-width: 480px) {
+  .search-filter-row {
+    flex-direction: column;
+  }
+
+  #filter-hospital {
+    width: 100%;
+  }
+}
+/* BUTTONS */
+button {
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s, background 0.3s;
+  margin-left: 5%;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #0b5ed7;
+}
+
+/* FADE-IN ANIMATION */
+/* .appear {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+.patient-card {
+  opacity: 0;
+  transform: translateY(20px);
+} */

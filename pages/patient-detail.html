@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Need-Fund — Patient Detail</title>
+
+    <link rel="stylesheet" href="patient-detail.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">Need-Fund</div>
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+        <a href="patients.html">Patients</a>
+      </nav>
+    </header>
+
+    <!-- PATIENT INFO MAIN CARD -->
+    <section class="patient-section">
+      <div class="patient-card">
+        <!-- LEFT SIDE PHOTO -->
+        <div class="photo">
+          <img src="" alt="Patient Photo" id="patient-img" />
+          <span class="verified-badge">✔ Verified</span>
+        </div>
+
+        <!-- RIGHT SIDE DETAILS -->
+        <div class="details">
+          <h1 id="p-name">Patient Name</h1>
+          <p class="hospital" id="p-hospital">Hospital Name</p>
+
+          <p class="case-summary" id="p-summary">
+            Full details will load here automatically...
+          </p>
+
+          <!-- PROGRESS + AMOUNT -->
+          <div class="amount-section">
+            <div class="progress-bar">
+              <div class="progress" id="p-progress"></div>
+            </div>
+
+            <p class="amount-needed" id="p-amount">$0 needed</p>
+          </div>
+
+          <button id="donateBtn" class="btn donate-btn">Donate Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DONOR MESSAGES -->
+    <section class="donor-messages">
+      <h2>Donor Messages</h2>
+
+      <div class="messages">
+        <p>"Wishing you a speedy recovery!" — Donor A</p>
+        <p>"Stay strong, help is on the way!" — Donor B</p>
+      </div>
+    </section>
+
+    <script src="patient-detail.js"></script>
+  </body>
+</html>

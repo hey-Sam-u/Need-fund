@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard — NeedFund</title>
+    <link rel="stylesheet" href="admin-dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <h2>NeedFund Admin</h2>
+      <ul>
+        <li class="active">Dashboard</li>
+        <li>Patients</li>
+        <li>Donations</li>
+        <li>Add Patient</li>
+        <li>Settings</li>
+        <li class="logout">Logout</li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <header>
+        <h1>Dashboard</h1>
+        <button id="darkModeBtn">🌙</button>
+      </header>
+
+      <!-- TOP CARDS -->
+      <section class="top-cards">
+        <div class="card" id="totalPatients">Total Patients: 0</div>
+        <div class="card" id="verifiedPatients">Verified: 0</div>
+        <div class="card" id="totalDonations">Total Donations: ₹0</div>
+        <div class="card" id="pendingPatients">Pending: 0</div>
+      </section>
+
+      <!-- PATIENT TABLE -->
+      <h2>Patients List</h2>
+      <div class="table-box">
+        <table id="patientsTable">
+          <thead>
+            <tr>
+              <th>Photo</th>
+              <th>Name</th>
+              <th>Hospital</th>
+              <th>Amount Needed</th>
+              <th>Progress</th>
+              <th>Verified</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- DONATION LOGS -->
+      <h2>Donation Logs</h2>
+      <div class="table-box">
+        <table id="donationTable">
+          <thead>
+            <tr>
+              <th>Donor</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="admin-dashboard.js"></script>
+  </body>
+</html>
