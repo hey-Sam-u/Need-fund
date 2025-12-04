@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Need-Fund — OCR Extraction (Demo)</title>
+    <link rel="stylesheet" href="verify-ocr.css" />
+  </head>
+  <body>
+    <main id="ocr-card" class="ocr-wrap" role="main">
+      <header class="ocr-header">
+        <a
+          href="verify-case.html"
+          id="backLink"
+          class="back-link"
+          aria-label="Back to cases"
+          >← Back</a
+        >
+        <h1 class="title">OCR Extraction</h1>
+      </header>
+
+      <section class="card" aria-labelledby="card-title">
+        <h2 id="card-title" class="sr-only">OCR Extraction Card</h2>
+
+        <div class="case-row">
+          <label for="case-id" class="label">Case ID</label>
+          <div class="case-inline">
+            <input
+              id="case-id"
+              type="text"
+              inputmode="text"
+              aria-label="Case ID"
+              readonly
+            />
+            <div id="case-info" class="case-info" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="label">Upload Document</div>
+        <div
+          id="drop-area"
+          class="drop-area"
+          tabindex="0"
+          aria-describedby="drop-desc"
+        >
+          <div class="drop-inner">
+            <svg width="40" height="40" viewBox="0 0 24 24" aria-hidden>
+              <path
+                fill="currentColor"
+                d="M12 3l4 4h-3v7h-2V7H8l4-4zm-6 13v2h12v-2H6z"
+              />
+            </svg>
+            <div>
+              <div id="drop-desc">
+                Drag & drop or
+                <button id="doc-input-btn" class="link-btn" type="button">
+                  choose file
+                </button>
+              </div>
+              <div class="hint">JPG / PNG • ≤ 5MB</div>
+            </div>
+          </div>
+          <input
+            id="doc-input"
+            type="file"
+            accept="image/png,image/jpeg"
+            class="hidden"
+          />
+        </div>
+
+        <div id="preview" class="preview hidden" aria-live="polite">
+          <img id="doc-thumb" alt="Document thumbnail" />
+          <div class="preview-meta">
+            <div id="doc-name" class="fname"></div>
+            <div id="doc-size" class="fsize"></div>
+          </div>
+          <button id="retry-btn" class="btn-small" type="button">Remove</button>
+        </div>
+
+        <label for="hospitalName" class="label">Hospital Name</label>
+        <input
+          id="hospitalName"
+          type="text"
+          placeholder="Hospital name (auto from sample)"
+        />
+
+        <div class="row">
+          <button id="start-ocr" class="btn-primary" type="button" disabled>
+            Start OCR Scan
+          </button>
+          <button id="proceed-next" class="btn-ghost" type="button" disabled>
+            Proceed
+          </button>
+        </div>
+
+        <div
+          id="extracted"
+          class="extracted hidden"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <h3>OCR Complete — Fields extracted</h3>
+
+          <div class="confidence-row">
+            <svg
+              id="confidence-meter"
+              viewBox="0 0 100 100"
+              class="meter"
+              aria-hidden
+            >
+              <circle cx="50" cy="50" r="40" class="meter-bg"></circle>
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                class="meter-fill"
+                style="stroke-dasharray: 251.2; stroke-dashoffset: 251.2"
+              ></circle>
+            </svg>
+            <div class="conf-text">
+              <div id="confidence-val" class="conf-val">--%</div>
+              <div class="muted">Confidence</div>
+            </div>
+          </div>
+
+          <div class="fields">
+            <div class="field">
+              <strong>Name:</strong> <span id="ext-name"></span>
+            </div>
+            <div class="field">
+              <strong>DOB:</strong> <span id="ext-dob"></span>
+            </div>
+            <div class="field">
+              <strong>Gender:</strong> <span id="ext-gender"></span>
+            </div>
+            <div class="field">
+              <strong>ID:</strong> <span id="ext-id"></span>
+            </div>
+          </div>
+        </div>
+
+        <p class="demo-note">
+          DEMO MODE — Do NOT upload real sensitive documents.
+        </p>
+      </section>
+    </main>
+
+    <!-- Overlay during OCR (hidden by default) -->
+    <div
+      id="ocr-overlay"
+      class="overlay hidden"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div
+        class="overlay-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="OCR scanning"
+      >
+        <div class="ring" aria-hidden></div>
+        <div class="steps" id="stepsArea">
+          <!-- .ocr-step items injected dynamically -->
+        </div>
+      </div>
+    </div>
+    <button id="faceverifyBtn" class="btn">Verify Face</button>
+
+    <script src="verify-ocr.js"></script>
+  </body>
+</html>
