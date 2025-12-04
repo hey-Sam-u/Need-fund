@@ -5,41 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Need-Fund — Case Verification (Demo)</title>
 
-    <!--
-    Integration instructions (copy into pages/patients.js render logic):
-
-    // Key prefix used by this demo:
-    const VER_KEY_PREFIX = 'needfund_verified_';
-
-    // Example snippet to show verified badge when rendering each patient card:
-    const key = VER_KEY_PREFIX + caseId; // caseId example: 'NF-1023'
-    const v = localStorage.getItem(key);
-    if (v) {
-      const parsed = JSON.parse(v);
-      // show badge and optionally add tooltip text:
-      // e.g. badgeElement.classList.add('verified'); badgeElement.title = `Verified on ${new Date(parsed.verifiedAt).toLocaleString()} by ${parsed.verifier}`;
-    }
-
-    // To auto-update when verify-case.html verifies in another tab:
-    window.addEventListener('storage', (e) => {
-      if (e.key && e.key.startsWith(VER_KEY_PREFIX)) {
-        // re-run your card render or update specific card
-      }
-    });
-
-    NOTES:
-    - Key pattern: needfund_verified_<CASE_ID> (e.g. needfund_verified_NF-1023)
-    - Stored value JSON:
-      {
-        verified: true,
-        verifiedAt: <timestamp>,
-        verifier: 'Hospital AI Bot (demo)',
-        docName: 'file.jpg',
-        docPreview: 'data:image/…' // optional (demo only)
-      }
-    - Demo mode: do NOT upload real sensitive docs.
-  -->
-
     <link rel="stylesheet" href="verify-case.css" />
   </head>
   <body>
@@ -193,6 +158,9 @@
         </p>
       </section>
     </main>
+
+    <button id="verifyOcr" class="btn">Verify Ocr</button>
+
 
     <script src="verify-case.js"></script>
   </body>

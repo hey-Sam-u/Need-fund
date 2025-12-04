@@ -300,3 +300,8 @@ window.addEventListener("storage", (e) => {
     }
   }
 });
+
+const verifyOcr = document.getElementById("verifyOcr");
+verifyOcr.addEventListener("click", () => {
+  window.location.href = "verify-ocr.html";
+});
