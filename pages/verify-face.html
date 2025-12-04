@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Need-Fund — Face Verification (Demo)</title>
+    <link rel="stylesheet" href="verify-face.css" />
+  </head>
+  <body>
+    <main id="face-card" class="face-wrap" role="main">
+      <header class="face-header">
+        <h1>Face Verification</h1>
+      </header>
+
+      <section class="card">
+        <div class="row case-row">
+          <label class="label">Case ID</label>
+          <input id="case-id" type="text" placeholder="Enter any Case ID" />
+          <div id="case-info" class="muted">Type case ID and press Enter</div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="label">Document Photo</label>
+            <div class="doc-box">
+              <img id="doc-thumb" class="thumb hidden" alt="Document preview" />
+              <div id="doc-placeholder" class="placeholder">
+                No document found. Upload via Verify Case.
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <label class="label">Upload Selfie</label>
+            <div
+              id="selfie-drop"
+              class="drop-area"
+              tabindex="0"
+              aria-describedby="selfie-desc"
+            >
+              <div id="selfie-desc">Click to choose selfie (JPG/PNG ≤5MB)</div>
+              <input
+                id="selfie-input"
+                type="file"
+                accept="image/png,image/jpeg"
+                class="hidden"
+              />
+            </div>
+            <img id="selfie-thumb" class="thumb hidden" alt="Selfie preview" />
+          </div>
+        </div>
+
+        <div id="liveliness-box" class="liveliness muted">
+          Please blink twice or nod (simulate) — then click
+          <strong>Start Face Match</strong>.
+        </div>
+
+        <div class="row">
+          <button id="start-match" class="btn" disabled>
+            Start Face Match
+          </button>
+          <button id="face-retry" class="btn-outline">Retry</button>
+        </div>
+
+        <div id="face-result" class="result hidden" aria-live="polite">
+          <svg id="face-meter" viewBox="0 0 120 120" class="meter" aria-hidden>
+            <circle cx="60" cy="60" r="50" class="meter-bg"></circle>
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              class="meter-fill"
+              style="stroke-dasharray: 314; stroke-dashoffset: 314"
+            ></circle>
+          </svg>
+          <div class="score-row">
+            <div id="face-score" class="score">--%</div>
+            <div id="face-status" class="status muted">Status</div>
+          </div>
+          <div class="breakdown muted" id="face-breakdown"></div>
+        </div>
+
+        <div class="row">
+          <button id="face-proceed" class="btn" disabled>Proceed</button>
+        </div>
+
+        <p class="demo-warning">
+          DEMO MODE — Frontend simulation only. Do NOT upload real sensitive
+          documents.
+        </p>
+      </section>
+    </main>
+
+    <div
+      id="face-overlay"
+      class="overlay hidden"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="overlay-panel" role="dialog" aria-modal="true">
+        <div class="ring" aria-hidden></div>
+        <div
+          class="steps"
+          id="stepsArea"
+          role="status"
+          aria-live="polite"
+        ></div>
+      </div>
+    </div>
+
+   
+
+    <script src="verify-face.js"></script>
+  </body>
+</html>
