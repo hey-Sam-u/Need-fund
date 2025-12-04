@@ -59,3 +59,8 @@ function verifyPatient(id) {
 document.getElementById("darkModeBtn").onclick = () => {
   document.body.classList.toggle("dark");
 };
+// Smooth scroll for "verify case"
+const donateBtn = document.getElementById("donateBtn");
+donateBtn.addEventListener("click", () => {
+  window.location.href = "verify-case.html";
+});
