@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeedFund — Final Verification</title>
+    <link rel="stylesheet" href="verify-final.css" />
+  </head>
+
+  <body>
+    <div id="final-card">
+      <button id="back-btn" class="back-btn">← Back</button>
+
+      <h2 class="title">Final Verification</h2>
+
+      <!-- CASE INPUT -->
+      <div class="case-block">
+        <input
+          id="case-input"
+          type="text"
+          placeholder="Enter Case ID (e.g., NF-1023)"
+        />
+        <button id="load-btn" class="btn primary">Load</button>
+      </div>
+
+      <!-- SUMMARY -->
+      <div id="summary-box" class="hidden">
+        <h3 class="sub">Summary</h3>
+
+        <div class="tile" id="tile-ocr">OCR: <span>—</span></div>
+        <div class="tile" id="tile-face">Face Match: <span>—</span></div>
+        <div class="tile" id="tile-holo">Hologram: <span>—</span></div>
+
+        <div class="tile score" id="tile-score">Score: <span>—</span></div>
+
+        <!-- Manual edit -->
+        <div id="manual-fields" class="manual hidden">
+          <label>Name: <input type="text" id="manual-name" /></label>
+          <label>Hospital: <input type="text" id="manual-hospital" /></label>
+        </div>
+
+        <!-- ACTION BUTTON -->
+        <button id="apply-verify" class="btn primary wide">
+          Apply Final Verification
+        </button>
+      </div>
+
+      <!-- RESULT SEAL -->
+      <div id="seal" class="seal hidden">
+        <div class="circle">
+          <svg viewBox="0 0 52 52">
+            <path class="tick" fill="none" d="M14 27 l8 8 16 -16" />
+          </svg>
+        </div>
+        <h2 id="seal-text">VERIFIED</h2>
+      </div>
+
+      <!-- CERTIFICATE -->
+      <div id="certificate" class="certificate hidden">
+        <h3>Need-Fund — Verification Certificate (Demo)</h3>
+
+        <p><b>Name:</b> <span id="cert-name">—</span></p>
+        <p><b>Case ID:</b> <span id="cert-case">—</span></p>
+        <p><b>Hospital:</b> <span id="cert-hospital">—</span></p>
+        <p><b>Verified at:</b> <span id="cert-time">—</span></p>
+        <p><b>Verifier:</b> <span id="cert-by">Hospital AI Bot (demo)</span></p>
+
+        <div class="cert-btns">
+          <button id="download-cert" class="btn primary">
+            Download Certificate
+          </button>
+          <button id="undo-verify" class="btn outline">
+            Undo Verification
+          </button>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        DEMO MODE — Frontend simulation only. Do NOT use for real verification.
+        <button id="donateBtn" class="btn">GO to Dashboard</button>
+      </p>
+    </div>
+
+    <!-- OVERLAY LOADER -->
+    <div id="loader-overlay" class="overlay hidden">
+      <div class="spinner"></div>
+    </div>
+
+    <script src="verify-final.js"></script>
+  </body>
+</html>

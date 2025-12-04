@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Need-Fund — Hologram Verification (Demo)</title>
+    <link rel="stylesheet" href="verify-hologram.css" />
+  </head>
+  <body>
+    <!-- Integration note:
+       - Document saved under localStorage key: needfund_doc_<CASE>
+       - Hologram result saved under: needfund_holo_<CASE>
+       - Emits event via localStorage.setItem('needfund_event', ...)
+       - Case resolution order: localStorage.active_case -> ?case= -> manual input
+  -->
+
+    <main id="holo-card" class="card-wrap" role="main">
+      <header class="card-header">
+        <a href="verify-face.html" class="back" aria-label="Back to face"
+          >← Back</a
+        >
+        <h1>Hologram Verification</h1>
+      </header>
+
+      <section class="card" aria-labelledby="card-title">
+        <h2 id="card-title" class="sr-only">Hologram verification</h2>
+
+        <label class="label">Case ID</label>
+        <div class="case-row">
+          <input
+            id="case-id"
+            type="text"
+            inputmode="text"
+            placeholder="e.g. NF-1023"
+          />
+          <div id="case-hint" class="muted">Type or use dashboard button</div>
+        </div>
+
+        <label class="label">Document (front photo / bill)</label>
+        <div
+          id="drop-area"
+          class="drop-area"
+          tabindex="0"
+          aria-describedby="drop-desc"
+        >
+          <div class="drop-inner">
+            <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden>
+              <path
+                fill="currentColor"
+                d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"
+              />
+            </svg>
+          </div>
+          <div class="drop-text">
+            <div id="drop-desc">
+              Drag & drop or
+              <button id="doc-input-btn" class="link-btn" type="button">
+                choose file
+              </button>
+            </div>
+            <div class="hint">JPG / PNG • ≤ 5MB</div>
+          </div>
+          <input
+            id="doc-input"
+            type="file"
+            accept="image/png,image/jpeg"
+            class="hidden"
+          />
+        </div>
+
+        <div id="preview" class="preview hidden" aria-live="polite">
+          <img id="doc-thumb" alt="Uploaded document thumbnail" />
+          <div class="preview-meta">
+            <div id="doc-name" class="fname"></div>
+            <div id="doc-size" class="fsize"></div>
+          </div>
+          <div class="preview-actions">
+            <button id="remove-doc" class="btn-small" type="button">
+              Remove
+            </button>
+            <button id="keep-doc" class="btn-small ghost" type="button">
+              Keep
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="start-holo" class="btn primary" type="button" disabled>
+            Start Hologram Verification
+          </button>
+          <button id="holo-retry" class="btn outline" type="button">
+            Clear Result
+          </button>
+        </div>
+
+        <div id="holo-result" class="result hidden" aria-live="polite">
+          <div class="result-top">
+            <div class="tick">✓</div>
+            <div>
+              <div class="result-title">
+                Hologram Verified — Document Secure
+              </div>
+              <div id="holo-time" class="muted small"></div>
+            </div>
+          </div>
+
+          <div class="fingerprint-box">
+            <div class="label small">Fingerprint</div>
+            <div id="fingerprint" class="fingerprint monospace"></div>
+          </div>
+
+          <div class="row">
+            <button id="holo-proceed" class="btn" disabled>Proceed</button>
+          </div>
+        </div>
+
+        <p class="demo-warning">
+          DEMO MODE — Frontend simulation only. Do NOT upload real sensitive
+          documents.
+        </p>
+      </section>
+    </main>
+
+    <!-- Overlay during hologram scan (hidden until start) -->
+    <div
+      id="holo-overlay"
+      class="overlay hidden"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="overlay-panel" role="dialog" aria-modal="true">
+        <div class="overlay-head">
+          <div class="overlay-title">Hologram Scanner</div>
+          <button
+            id="overlay-cancel"
+            class="btn-cancel"
+            aria-label="Cancel scan"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="laser-area">
+          <div
+            id="doc-preview-mini"
+            class="mini-thumb hidden"
+            aria-hidden
+          ></div>
+          <div id="laser-line" class="laser-line" aria-hidden></div>
+        </div>
+
+        <div id="stepsArea" class="steps" role="status" aria-live="polite">
+          <!-- injected steps -->
+        </div>
+      </div>
+    </div>
+
+    <script src="verify-hologram.js"></script>
+  </body>
+</html>
